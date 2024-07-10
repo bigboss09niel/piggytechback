@@ -37,7 +37,7 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(csrf -> csrf.disable())
         .authorizeHttpRequests((authorize) ->
-            authorize.requestMatchers(HttpMethod.GET,"/api/v1/**").permitAll() //remove HttpMethod.GET to function all POSTMAPPING
+            authorize.requestMatchers("/api/v1/**").permitAll() //remove (HttpMethod.GET) to function all POSTMAPPING or put (HttpMethod.GET) to front of "/api/v1/**/"
             .requestMatchers("/api/v1/auth/**").permitAll()
             .anyRequest().authenticated()
         );
